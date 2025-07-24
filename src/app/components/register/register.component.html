@@ -1,0 +1,61 @@
+<div class="center-container">
+  <div>
+    <p>Cart Mart Register</p>
+
+    <form [formGroup]="register" (ngSubmit)="handleSubmitRegister()">
+      <input
+        type="name"
+        placeholder="Please enter your name..."
+        formControlName="name"
+      />
+      <div
+        *ngIf="register.get('name')?.touched && register.get('name')?.invalid"
+      >
+        <small *ngIf="register.get('name')?.errors?.['required']">
+          Name is required.
+        </small>
+        <small *ngIf="register.get('name')?.errors?.['minlength']">
+          Name must be at least 3 characters long.
+        </small>
+      </div>
+
+      <input
+        type="email"
+        placeholder="Please enter your email..."
+        formControlName="email"
+      />
+      <div
+        *ngIf="register.get('email')?.touched && register.get('email')?.invalid"
+      >
+        <small *ngIf="register.get('email')?.errors?.['required']">
+          Email is required.
+        </small>
+        <small *ngIf="register.get('email')?.errors?.['email']">
+          Invalid email format.
+        </small>
+      </div>
+
+      <input
+        type="password"
+        placeholder="Please enter your password..."
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          register.get('password')?.touched && register.get('password')?.invalid
+        "
+      >
+        <small *ngIf="register.get('password')?.errors?.['required']">
+          Password is required.
+        </small>
+        <small *ngIf="register.get('password')?.errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </small>
+      </div>
+
+      <button type="submit">Register</button>
+
+      <a routerLink="/login">Already have an account? Login</a>
+    </form>
+  </div>
+</div>

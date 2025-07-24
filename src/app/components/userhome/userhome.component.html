@@ -1,0 +1,18 @@
+<app-header>Welcome to user Home</app-header>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of Users">
+      <th>{{ user.id }}</th>
+      <th>{{ user.name }}</th>
+      <th>{{ user.email }}</th>
+    </tr>
+  </tbody>
+</table>

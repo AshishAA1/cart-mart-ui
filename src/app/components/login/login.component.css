@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(120deg, #e0f7fa, #ffffff);
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00796b;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #00796b;
+  outline: none;
+}
+
+small {
+  color: #e53935;
+  font-size: 0.875rem;
+}
+
+button {
+  padding: 10px;
+  background-color: #00796b;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #004d40;
+}
+
+a {
+  text-align: center;
+  color: #00796b;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
