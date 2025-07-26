@@ -40,6 +40,7 @@ export class LoginComponent {
       .subscribe(
         (data: any) => {
           console.log(data);
+          Cookie.delete('authToken');
           Cookie.set('authToken', data.token);
           if (data && data.token) {
             alert('login successfully');

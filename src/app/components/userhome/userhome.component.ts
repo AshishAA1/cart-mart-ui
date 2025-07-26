@@ -18,21 +18,22 @@ import { HeaderComponent } from './header/header.component';
   standalone: true,
 })
 export class UserhomeComponent implements OnInit {
-  public Users: any = [];
+  public Crates: any = [];
 
   constructor(private httpClient: HttpClient) {}
 
   getAllUsers() {
-    const baseUrl = 'http://localhost:8085/getUsers';
+    const baseUrl = 'http://localhost:8085/api/crates/getCrates';
     const token = Cookie.get('authToken');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
 
+    Cookie.set('authToken', token);
     this.httpClient.get(baseUrl, { headers: headers }).subscribe(
       (response: any) => {
-        this.Users = response;
+        this.Crates = response;
       },
       (error) => {
         console.error(error);
