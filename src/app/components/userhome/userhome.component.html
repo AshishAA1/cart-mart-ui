@@ -1,44 +1,26 @@
-<app-header>Welcome to user Home</app-header>
+<app-header>Welcome to User Home</app-header>
 
-<table>
-  <thead>
-    <tr>
-      <th>crateId</th>
-      <th>crateName</th>
-      <th>crateDescription</th>
-      <th>cratePrice</th>
-      <th>crateColor</th>
-      <th>sellerInfo</th>
-      <th>address</th>
-      <th>state</th>
-      <th>phoneNo</th>
-      <th>crateMeasurment</th>
-      <th>crateImgPath</th>
-      <th>crateImg</th>
-      <th>version</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let crate of Crates">
-      <th>{{ crate.crateId }}</th>
-      <th>{{ crate.crateName }}</th>
-      <th>{{ crate.crateDescription }}</th>
-      <th>{{ crate.cratePrice }}</th>
-      <th>{{ crate.crateColor }}</th>
-      <th>{{ crate.sellerInfo }}</th>
-      <th>{{ crate.address }}</th>
-      <th>{{ crate.state }}</th>
-      <th>{{ crate.phoneNo }}</th>
-      <th>{{ crate.crateMeasurment }}</th>
-      <th>{{ crate.crateImgPath }}</th>
-      <th>
-        <img
-          *ngIf="crate.crateImgbyteArray"
-          [src]="'data:image/png;base64,' + crate.crateImgbyteArray"
-          width="100"
-        />
-      </th>
-      <th>{{ crate.version }}</th>
-    </tr>
-  </tbody>
-</table>
+<div class="card-container">
+  <div class="crate-card" *ngFor="let crate of Crates">
+    <img
+      *ngIf="crate.crateImgbyteArray"
+      [src]="'data:image/png;base64,' + crate.crateImgbyteArray"
+      class="crate-image"
+      alt="Crate Image"
+    />
+    <div class="crate-details">
+      <h3>{{ crate.crateName }}</h3>
+      <p><strong>ID:</strong> {{ crate.crateId }}</p>
+      <p><strong>Description:</strong> {{ crate.crateDescription }}</p>
+      <p><strong>Price:</strong> ₹{{ crate.cratePrice }}</p>
+      <p><strong>Color:</strong> {{ crate.crateColor }}</p>
+      <p><strong>Seller:</strong> {{ crate.sellerInfo }}</p>
+      <p><strong>Address:</strong> {{ crate.address }}</p>
+      <p><strong>State:</strong> {{ crate.state }}</p>
+      <p><strong>Phone:</strong> {{ crate.phoneNo }}</p>
+      <p><strong>Size:</strong> {{ crate.crateMeasurment }}</p>
+      <p><strong>Image Path:</strong> {{ crate.crateImgPath }}</p>
+      <p><strong>Version:</strong> {{ crate.version }}</p>
+    </div>
+  </div>
+</div>
