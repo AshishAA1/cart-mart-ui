@@ -31,7 +31,13 @@
       <th>{{ crate.phoneNo }}</th>
       <th>{{ crate.crateMeasurment }}</th>
       <th>{{ crate.crateImgPath }}</th>
-      <th>{{ crate.crateImg }}</th>
+      <th>
+        <img
+          *ngIf="crate.crateImgbyteArray"
+          [src]="'data:image/png;base64,' + crate.crateImgbyteArray"
+          width="100"
+        />
+      </th>
       <th>{{ crate.version }}</th>
     </tr>
   </tbody>

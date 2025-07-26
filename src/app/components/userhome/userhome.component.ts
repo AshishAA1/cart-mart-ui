@@ -31,9 +31,18 @@ export class UserhomeComponent implements OnInit {
     });
 
     Cookie.set('authToken', token);
-    this.httpClient.get(baseUrl, { headers: headers }).subscribe(
-      (response: any) => {
-        this.Crates = response;
+    this.httpClient.get<any[]>(baseUrl, { headers: headers }).subscribe(
+      (response) => {
+        this.Crates = response.map((crate) => {
+          if (crate.crateImg && crate.crateImg.length > 0) {
+            const byteArray = new Uint8Array(crate.crateImg);
+            let binary = '';
+            byteArray.forEach((byte) => (binary += String.fromCharCode(byte)));
+            const base64 = btoa(binary);
+            crate.crateImgSrc = `data:image/png;base64,${base64}`;
+          }
+          return crate;
+        });
       },
       (error) => {
         console.error(error);
