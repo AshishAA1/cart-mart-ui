@@ -3,16 +3,42 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Email</th>
+      <th>crateId</th>
+      <th>crateName</th>
+      <th>crateDescription</th>
+      <th>cratePrice</th>
+      <th>crateColor</th>
+      <th>sellerInfo</th>
+      <th>address</th>
+      <th>state</th>
+      <th>phoneNo</th>
+      <th>crateMeasurment</th>
+      <th>crateImgPath</th>
+      <th>crateImg</th>
+      <th>version</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of Users">
-      <th>{{ user.id }}</th>
-      <th>{{ user.name }}</th>
-      <th>{{ user.email }}</th>
+    <tr *ngFor="let crate of Crates">
+      <th>{{ crate.crateId }}</th>
+      <th>{{ crate.crateName }}</th>
+      <th>{{ crate.crateDescription }}</th>
+      <th>{{ crate.cratePrice }}</th>
+      <th>{{ crate.crateColor }}</th>
+      <th>{{ crate.sellerInfo }}</th>
+      <th>{{ crate.address }}</th>
+      <th>{{ crate.state }}</th>
+      <th>{{ crate.phoneNo }}</th>
+      <th>{{ crate.crateMeasurment }}</th>
+      <th>{{ crate.crateImgPath }}</th>
+      <th>
+        <img
+          *ngIf="crate.crateImgbyteArray"
+          [src]="'data:image/png;base64,' + crate.crateImgbyteArray"
+          width="100"
+        />
+      </th>
+      <th>{{ crate.version }}</th>
     </tr>
   </tbody>
 </table>

@@ -18,21 +18,31 @@ import { HeaderComponent } from './header/header.component';
   standalone: true,
 })
 export class UserhomeComponent implements OnInit {
-  public Users: any = [];
+  public Crates: any = [];
 
   constructor(private httpClient: HttpClient) {}
 
   getAllUsers() {
-    const baseUrl = 'http://localhost:8085/getUsers';
+    const baseUrl = 'http://localhost:8085/api/crates/getCrates';
     const token = Cookie.get('authToken');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
 
-    this.httpClient.get(baseUrl, { headers: headers }).subscribe(
-      (response: any) => {
-        this.Users = response;
+    Cookie.set('authToken', token);
+    this.httpClient.get<any[]>(baseUrl, { headers: headers }).subscribe(
+      (response) => {
+        this.Crates = response.map((crate) => {
+          if (crate.crateImg && crate.crateImg.length > 0) {
+            const byteArray = new Uint8Array(crate.crateImg);
+            let binary = '';
+            byteArray.forEach((byte) => (binary += String.fromCharCode(byte)));
+            const base64 = btoa(binary);
+            crate.crateImgSrc = `data:image/png;base64,${base64}`;
+          }
+          return crate;
+        });
       },
       (error) => {
         console.error(error);
